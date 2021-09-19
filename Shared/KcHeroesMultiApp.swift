@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct KcHeroesMultiApp: App {
+    @StateObject var rootViewModel: RootViewModel = RootViewModel() // ViewModel global en la APP
+    
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(rootViewModel) // Se inyecta el ViewModel en el login
+
         }
     }
 }
