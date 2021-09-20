@@ -13,7 +13,7 @@ import SwiftUI
 class ImageViewModel: ObservableObject {
     @Published var image: Image?
     
-    var suscriptor = Set<AnyCancellable>()
+    var suscriptors = Set<AnyCancellable>()
     
     func loadImage(url: String) {
         // Control de cache ...
@@ -34,6 +34,6 @@ class ImageViewModel: ObservableObject {
             .sink { image in
                 self.image = image
             }
-            .store(in: &suscriptor)
+            .store(in: &suscriptors)
     }
 }

@@ -24,6 +24,7 @@ struct HTTPHeaders {
 enum endpoints: String {
     case login = "/api/auth/login"
     case herosList = "/api/heros/all"
+    case developerList = "/api/data/developers"
 }
 
 
@@ -64,6 +65,23 @@ struct BaseNetwork {
             request.addValue("Bearer \(tokenJWT)", forHTTPHeaderField: "Authorization")
         }
                 
+        return request
+    }
+    
+    func getSessionDevelopers() -> URLRequest {
+        let url: String = "\(baseUrl)\(endpoints.developerList.rawValue)"
+        
+        var request: URLRequest = URLRequest(url: URL(string: url)!) // Se debería desempaquetar y no usar !
+        
+        request.httpMethod = HTTPMethods.get
+        request.addValue(HTTPHeaders.content, forHTTPHeaderField: "Content-type")
+        
+        // Obtenemos el token almacenado y lo desempaquetamos para usarlo en la llamada
+        let storedToken = loadKC(key: CONST_TOKEN_ID)
+        if let tokenJWT = storedToken{
+            request.addValue("Bearer \(tokenJWT)", forHTTPHeaderField: "Authorization")
+        }
+        
         return request
     }
 }

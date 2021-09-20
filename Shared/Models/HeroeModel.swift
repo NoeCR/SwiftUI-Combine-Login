@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HeroesModel: Codable, Identifiable {
+struct HeroeModel: Codable, Identifiable {
     var id: UUID
     var name: String
     var description: String

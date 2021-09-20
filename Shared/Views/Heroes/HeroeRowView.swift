@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct HeroesRowView: View {
+struct HeroeRowView: View {
     // Utilizamos ObservedObject para cuadno muera la vista desuscribirse del observable
     @ObservedObject private var viewModel = ImageViewModel()
-    var heroe: HeroesModel
+    var heroe: HeroeModel
         
     var body: some View {
         VStack{
@@ -59,7 +59,7 @@ struct HeroesRowView: View {
 
 struct HeroesRowView_Previews: PreviewProvider {
     static var previews: some View {
-        HeroesRowView(heroe: HeroesModel(id: UUID(), name: "Hulk", description: "Caught in a gamma bomb explosion while trying to save the life of a teenager, Dr. Bruce Banner was transformed into the incredibly powerful creature called the Hulk. An all too often misunderstood hero, the angrier the Hulk gets, the stronger the Hulk gets.", photo: "http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0/portrait_incredible.jpg", favorite: true))
+        HeroeRowView(heroe: HeroeModel(id: UUID(), name: "Hulk", description: "Caught in a gamma bomb explosion while trying to save the life of a teenager, Dr. Bruce Banner was transformed into the incredibly powerful creature called the Hulk. An all too often misunderstood hero, the angrier the Hulk gets, the stronger the Hulk gets.", photo: "http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0/portrait_incredible.jpg", favorite: true))
         
     }
 }

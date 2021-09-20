@@ -8,26 +8,30 @@
 import SwiftUI
 
 struct HeroesView: View {
-    @StateObject var viewModel: HeroesViewModel
+    @StateObject var viewModel: HeroeViewModel
     @State private var filter: String = ""
     
     var body: some View {
-        List {
-            if let heroes = viewModel.heroes {
-                ForEach(heroes) { data in
-                    NavigationLink(
-                        destination: Text("\(data.name)"),
-                        label: {
-                            HeroesRowView(heroe: data)
-                        })
+        NavigationView {
+            List {
+                if let heroes = viewModel.heroes {
+                    ForEach(heroes) { data in
+                        NavigationLink(
+                            destination: HeroesDetailView(heroe: data),
+                            label: {
+                                HeroeRowView(heroe: data)
+                            })
+                    }
                 }
             }
+            .navigationBarTitle("KeepCoding", displayMode: .large)
         }
+        
     }
 }
 
 struct HeroesView_Previews: PreviewProvider {
     static var previews: some View {
-        HeroesView(viewModel: HeroesViewModel(testing: true))
+        HeroesView(viewModel: HeroeViewModel(testing: true))
     }
 }

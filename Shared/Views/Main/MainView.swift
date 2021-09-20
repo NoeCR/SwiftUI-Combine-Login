@@ -14,16 +14,14 @@ struct MainView: View {
     var body: some View {
         TabView(selection: $selection) {
          
-            HeroesView(viewModel: HeroesViewModel())
+            HeroesView(viewModel: HeroeViewModel())
             .tabItem {
                 Image(systemName: "house")
                 Text("Heroes")
             }
             .tag(0)
      
-            VStack{
-                Text("KeepCoders")
-            }
+            DevelopersView(viewModel: DeveloperViewModel())
             .tabItem {
                 Image(systemName: "person.2")
                 Text("KeepCoders")
